@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import ForeignKey
 from mptt.models import MPTTModel, TreeForeignKey
 
 
@@ -10,11 +11,11 @@ class Office(MPTTModel):
     )
 
     def __str__(self):
-        return  self.name
+        return self.name
 
 
 class Document(models.Model):
-    office = TreeForeignKey(
+    office = ForeignKey(
         'declarations.Office', verbose_name="орган власти", on_delete=True)
     income_year = models.IntegerField(
         verbose_name="год за который указан доход"
