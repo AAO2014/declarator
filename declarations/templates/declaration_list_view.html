@@ -4,20 +4,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ node.name }}</title>
+    <title>{{ office_list.get_ancectors.0.name }}</title>
 </head>
 <body>
-    <ul class="root">
-        {% recursetree nodes %}
-            <li>
-                {{ node.name }}
-                {% if not node.is_leaf_node %}
-                    <ul class="children">
-                        {{ children }}
-                    </ul>
-                {% endif %}
-            </li>
-        {% endrecursetree %}
-    </ul>
+    {{ office_list.get_ancestors.0.name }}
+    <table class="table">
+        <tr>
+            <td width=33%></td>
+            {% for year in years %}<td>{{ year }}</td> {% endfor %}
+        </tr>
+            {% recursetree office_list %}
+                <tr>
+                    <td>
+                        {{ node.name }}
+                        {% if not node.is_leaf_node %}
+                            <ul class="children">
+                                {{ children }}
+                            </ul>
+                        {% endif %}
+                    </td>
+                    {% for year in years %}
+                        <td>
+                            {% if node.documents and node.documents.%}
+                                {% if node.documents %}
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                </tr>
+            {% endrecursetree %}
+    </table>
 </body>
 </html>

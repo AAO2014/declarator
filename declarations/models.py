@@ -16,10 +16,15 @@ class Office(MPTTModel):
 
 class Document(models.Model):
     office = ForeignKey(
-        'declarations.Office', verbose_name="орган власти", on_delete=True)
+        'declarations.Office', verbose_name="орган власти",
+        on_delete=True, related_name='documents'
+    )
     income_year = models.IntegerField(
         verbose_name="год за который указан доход"
     )
+
+    def __str__(self):
+        return 'Документ из организации ' + self.office.name
 
 
 class DocumentFile(models.Model):
@@ -31,3 +36,6 @@ class DocumentFile(models.Model):
         blank=True, max_length=255, null=True,
         upload_to='uploads/%Y/%m/%d/', verbose_name="файл"
     )
+
+    def __str__(self):
+        return 'Файл декларации организации ' + self.document.office.name
