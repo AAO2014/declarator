@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models, connection
 from django.db.models import ForeignKey
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -66,7 +66,8 @@ def refres_year_list():
     return list(range(year_list[0], year_list[len(year_list)-1]-1, -1)) if len(year_list) > 1 else [year_list[0]]
 
 
-year_list = refres_year_list()
+if 'declarator_document' in connection.introspection.table_names():
+    year_list = refres_year_list()
 
 
 class DocumentFile(models.Model):
