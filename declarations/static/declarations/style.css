@@ -1,0 +1,58 @@
+html *
+{
+    font-size: 1em !important;
+    color: #000 !important;
+    font-family: Sans, Times !important;
+}
+
+.full-circle {
+    background-color:#000;
+    height:10px;
+    width:10px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+}
+
+.transparent-circle {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid grey;
+    height: 7px;
+    width: 7px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+.semi-fulled-circle {
+    background-color: rgb(190, 190, 190);
+    border: 2px solid grey;
+    height: 7px;
+    width: 7px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+
+.grey {
+    font-size: small;
+    color: grey;
+    text-align: center;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0)
+  and (min-resolution:.001dpcm) {
+    .big {
+        font-size: x-large;
+    }
+}
+
+table td + td {
+    text-align: center;
+}
+
+.border {
+    border-right: aqua dotted;
+}
+
+table tr:hover:not(:first-child) {
+      background-color: #dfd;
+}

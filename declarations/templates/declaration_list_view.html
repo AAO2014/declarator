@@ -1,33 +1,37 @@
-{% load mptt_tags %}
+{% load mptt_tags static%}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ office_list.get_ancectors.0.name }}</title>
+    <title>{{ object_list.first.name }}</title>
+    <link rel="stylesheet" href="{% static 'declarations/style.css' %}" />
 </head>
 <body>
-    {{ office_list.get_ancestors.0.name }}
+    <div></div>
+    {{ object_list.get_ancestors.first.name }}
     <table class="table">
         <tr>
-            <td width=33%></td>
+            <td></td>
             {% for year in years %}<td>{{ year }}</td> {% endfor %}
         </tr>
-            {% recursetree office_list %}
+            {% recursetree object_list %}
                 <tr>
-                    <td>
+                    <td class="border" width="30%">
                         {{ node.name }}
-                        {% if not node.is_leaf_node %}
-                            <ul class="children">
-                                {{ children }}
-                            </ul>
-                        {% endif %}
                     </td>
-                    {% for year in years %}
-                        <td>
-                            {% if node.documents and node.documents.%}
-                                {% if node.documents %}
+                    {% for file_status in node.get_status %}
+                        <td width="7%"><div class="grey sign border">
+                            {% if file_status == 'all_files' %}
+                                <span class="big">&#9679;</span>
+                            {% elif file_status == 'some_files' %}
+                                &#9681;
+                            {% elif file_status == 'no_files_but_declaration' %}
+                                <span class="big">&#9675;</span>
+                            {% else %}
+                                <span> &nbsp; </span>
                             {% endif %}
+                            </div>
                         </td>
                     {% endfor %}
                 </tr>
