@@ -63,10 +63,10 @@ def refres_year_list():
         order_by('-income_year').values_list('income_year', flat=True)
     if len(year_list) == 0:
         return []
-    return list(range(year_list[0], year_list[len(year_list)-1]-1, -1)) if len(year_list) > 1 else [year_list[0]]
+    return list(range(year_list[0], year_list[len(year_list)-1]-1, -1)) if len(year_list) >= 2 else [year_list[0]]
 
 
-if 'declarator_document' in connection.introspection.table_names():
+if 'declarations_document' in connection.introspection.table_names():
     year_list = refres_year_list()
 
 
