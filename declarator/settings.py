@@ -25,7 +25,11 @@ SECRET_KEY = 'iefghy_)9h)^dfi@pog$(7_#9$e3owg%3s7jh1ol_63c7yz%_r'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'ravis31.pythonanywhere.com',
+    '127.0.0.1',
+    'localhost',
+]
 
 
 # Application definition
